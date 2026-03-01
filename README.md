@@ -18,7 +18,7 @@
 
 ## 🧭 Project Overview
 Credit risk teams need early signals of potential delinquency to reduce losses and support consistent lending decisions.  
-This project builds a **binary classification model** to predict whether a borrower will become **90+ days delinquent within 2 years** (`SeriousDlqin2yrs`) using the Kaggle *Give Me Some Credit* dataset.
+This project builds a **binary classification model** to predict whether a borrower will become **90+ days delinquent within 2 years** (`SeriousDlqin2yrs`). 
 
 ---
 
