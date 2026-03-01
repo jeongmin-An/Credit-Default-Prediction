@@ -43,7 +43,6 @@ This project builds a **binary classification model** to predict whether a borro
 ---
 
 ## 🧹 Data Preprocessing
-The notebook applies targeted cleaning to improve model stability and avoid biased deletion.
 
 ### 1) Missing Values
 - Missingness concentrated in **MonthlyIncome** and **NumberOfDependents**
@@ -68,8 +67,9 @@ The notebook applies targeted cleaning to improve model stability and avoid bias
 ## 🔎 Exploratory Data Analysis (EDA) Highlights
 - Visualized **target imbalance** (delinquency is the minority class)
 - Missingness inspection (income / dependents)
-- Distribution checks (with reasonable caps for visualization):
-  - `age`, `MonthlyIncome`, utilization, delinquency-count features
+- Checked feature distributions:
+  - `age`, `MonthlyIncome`
+  - Delinquency counts: `NumberOfTime30-59DaysPastDueNotWorse`, `NumberOfTime60-89DaysPastDueNotWorse`, `NumberOfTimes90DaysLate`
 - Correlation heatmap to inspect feature relationships and redundancy
 
 ---
@@ -96,7 +96,7 @@ The notebook applies targeted cleaning to improve model stability and avoid bias
 - Scoring: **roc_auc**
 - n_jobs = -1 (parallel)
 
-Best CV params (from notebook):
+Best CV params:
 - **LR:** `C=0.1`, `penalty='l2'`, `class_weight=None`
 - **RF:** `n_estimators=200`, `max_depth=10`, `min_samples_split=2`, `class_weight='balanced_subsample'`
 - **GB:** `n_estimators=100`, `learning_rate=0.05`, `max_depth=3`
@@ -115,7 +115,7 @@ Best CV params (from notebook):
 | Logistic Regression | 0.800 | 0.795 |
 
 ### Minority-Class Performance (Delinquency = 1)
-From the notebook’s test-set report for the best model (MLP):
+
 - **Recall (class 1): 0.68**  → risky borrowers are captured relatively well  
 - **Precision (class 1): 0.22** → higher false positives (risk teams often accept this trade-off)
 
